@@ -22,5 +22,7 @@ class LoginCoordinator: Coordinatable {
     func showSignUp() {
         SignUpCoordinator.init().coordinate(to: rootViewController)
     }
-    
+    func adminLogin() {
+        AdminListCoordinator.init().coordinate(to: rootViewController)
+    }
 }

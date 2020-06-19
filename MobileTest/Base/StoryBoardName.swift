@@ -12,6 +12,7 @@ import UIKit
 enum StoryBoardName:String {
     case Main = "Main"
     case Login = "Login"
+    case List = "List"
     
     var storyboard:UIStoryboard {
         return UIStoryboard(name: self.rawValue, bundle: nil)

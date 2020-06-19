@@ -32,9 +32,31 @@ class Alerts:NSObject {
 }
 extension String {
     func isValidPassword() -> Bool {
-//
         
         let passwordTest = NSPredicate(format: "SELF MATCHES %@", "(?=.*[A-Z])(?=.*[0-9]).{3,}")
         return passwordTest.evaluate(with: self)
+    }
+}
+extension UITableView {
+    func registerCell(_ name : String) {
+        self.register(UINib(nibName: name, bundle: nil), forCellReuseIdentifier: name)
+    }
+}
+extension UIView {
+    class var nibName: String {
+        return String(describing: self)
+    }
+}
+extension UIImage {
+    enum JPEGQuality: CGFloat {
+        case lowest  = 0
+        case low     = 0.25
+        case medium  = 0.5
+        case high    = 0.75
+        case highest = 1
+    }
+
+    func jpeg(_ jpegQuality: JPEGQuality) -> Data? {
+        return jpegData(compressionQuality: jpegQuality.rawValue)
     }
 }

@@ -58,11 +58,14 @@ class SignUpViewController: UIViewController {
             return
         }
         let image =  (self.imageButton.image(for: .normal)) ?? UIImage()
+         let imageData = image.jpeg(.medium) ?? Data()
+           // print(imageData.count)
         
-        let dataPNGImg = image.pngData() ?? Data()
+        
+       // let dataPNGImg = image.pngData() ?? Data()
 
 
-        let userModel = UserModel(fullName, email, dataPNGImg, password: password, userType: .personal)
+        let userModel = UserModel(fullName, email, imageData, password: password, userType: .personal)
         RealmService.shared.create(userModel) { ( error) in
             if error != nil {
                 Alerts.ShowAlert( message: StringHelper.ErrorDB, vc: self)

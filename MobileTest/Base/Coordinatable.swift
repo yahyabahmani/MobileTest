@@ -17,9 +17,10 @@ protocol Coordinatable:class {
 }
 extension Coordinatable {
 func coordinate(to viewController: UIViewController) {
-    viewController.present(rootViewController, animated: true)
-    //viewController.show(self.rootViewController, sender: nil)
+    //viewController.present(rootViewController, animated: true)
+    viewController.show(self.rootViewController, sender: nil)
 }
+    
     func coordinate(to window: UIWindow) {
         window.rootViewController = self.rootViewController
         window.makeKeyAndVisible()

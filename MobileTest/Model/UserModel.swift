@@ -14,6 +14,7 @@ class UserModel:Object {
     @objc dynamic var image = Data()
     @objc dynamic var password = ""
     @objc dynamic var usreType = UserType.personal.rawValue
+    @objc dynamic var isLogin = false
 
 
     override static func primaryKey() -> String? {

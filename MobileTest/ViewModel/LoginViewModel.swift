@@ -15,4 +15,7 @@ class LoginViewModel:BaseViewModel {
     func loginAction () {
         
     }
+    func adminLogin() {
+        (self.coordinator as? LoginCoordinator)?.adminLogin()
+    }
 }

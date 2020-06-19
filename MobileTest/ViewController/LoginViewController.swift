@@ -28,6 +28,9 @@ class LoginViewController: BaseViewController {
      
      }
     @IBAction func loginAction(_ sender: Any) {
+        if userNameTextFeild.text == "admin" && passwordTextFeild.text == "admin" {
+            self.viewModel?.adminLogin()
+        }
     }
     
 }
