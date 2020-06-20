@@ -15,36 +15,34 @@ class SplashViewController: BaseViewController {
         super.viewDidLoad()
         self.indicator.startAnimating()
         
-        let realm = RealmService.shared.getDataFromDB(type: UserModel())
-        let userLogin = realm.filter("isLogin == true")
         delayForSeconds(delay: 3) {
-            if userLogin.count == 0 {
-                self.viewModel?.showLogin()
+            if userMobile.shared.userEmail.count != 0 {
+                self.showHomeUser()
+            }
+            if userMobile.shared.isLoginAdmin == true {
+                self.viewModel?.showAdminLogin()
             }else{
-                
+                self.viewModel?.showLogin()
             }
         }
-        
         // Do any additional setup after loading the view.
     }
     
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
-}
-extension SplashViewController:InstantiatableViewControllerType{
-    static var storyboardName: StoryBoardName {
-        .Main
+
+    func showHomeUser() {
+        let email = userMobile.shared.userEmail
+        let realm = RealmService.shared.getDataFromDB(type: UserModel())
+        if let user = realm.filter("email == %@",email).first {
+            self.viewModel?.showuserLogin(user)
+            
+        }
     }
-    
-    
-    
+}
+    extension SplashViewController:InstantiatableViewControllerType{
+        static var storyboardName: StoryBoardName {
+            .Main
+        }
+        
+        
+        
 }

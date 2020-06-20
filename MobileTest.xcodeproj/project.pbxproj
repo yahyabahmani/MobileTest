@@ -44,6 +44,13 @@
 		FA899610249D02AA0055007D /* AdminListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA89960F249D02AA0055007D /* AdminListCoordinator.swift */; };
 		FA899616249D13180055007D /* AdminListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA899614249D13180055007D /* AdminListTableViewCell.swift */; };
 		FA899617249D13180055007D /* AdminListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA899615249D13180055007D /* AdminListTableViewCell.xib */; };
+		FA899619249D35FB0055007D /* UserDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA899618249D35FB0055007D /* UserDetailsViewController.swift */; };
+		FA89961B249D36100055007D /* UserDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA89961A249D36100055007D /* UserDetailsViewModel.swift */; };
+		FA89961D249D36210055007D /* UserDetailsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA89961C249D36210055007D /* UserDetailsCoordinator.swift */; };
+		FA89961F249D3FFE0055007D /* MobileUserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA89961E249D3FFE0055007D /* MobileUserDefault.swift */; };
+		FA899621249D42B40055007D /* UserDetailsPersonalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA899620249D42B40055007D /* UserDetailsPersonalViewController.swift */; };
+		FA899623249D42F80055007D /* UserDetailsPersonalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA899622249D42F80055007D /* UserDetailsPersonalViewModel.swift */; };
+		FA899625249D43540055007D /* UserDetailsPersonalCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA899624249D43540055007D /* UserDetailsPersonalCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -113,6 +120,13 @@
 		FA89960F249D02AA0055007D /* AdminListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminListCoordinator.swift; sourceTree = "<group>"; };
 		FA899614249D13180055007D /* AdminListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminListTableViewCell.swift; sourceTree = "<group>"; };
 		FA899615249D13180055007D /* AdminListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AdminListTableViewCell.xib; sourceTree = "<group>"; };
+		FA899618249D35FB0055007D /* UserDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailsViewController.swift; sourceTree = "<group>"; };
+		FA89961A249D36100055007D /* UserDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailsViewModel.swift; sourceTree = "<group>"; };
+		FA89961C249D36210055007D /* UserDetailsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailsCoordinator.swift; sourceTree = "<group>"; };
+		FA89961E249D3FFE0055007D /* MobileUserDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileUserDefault.swift; sourceTree = "<group>"; };
+		FA899620249D42B40055007D /* UserDetailsPersonalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailsPersonalViewController.swift; sourceTree = "<group>"; };
+		FA899622249D42F80055007D /* UserDetailsPersonalViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailsPersonalViewModel.swift; sourceTree = "<group>"; };
+		FA899624249D43540055007D /* UserDetailsPersonalCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailsPersonalCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -233,6 +247,8 @@
 				FA89960F249D02AA0055007D /* AdminListCoordinator.swift */,
 				FA5A8207249BF12500D9C6E6 /* LoginCoordinator.swift */,
 				FA5A8211249BF87500D9C6E6 /* SignUpCoordinator.swift */,
+				FA89961C249D36210055007D /* UserDetailsCoordinator.swift */,
+				FA899624249D43540055007D /* UserDetailsPersonalCoordinator.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -244,6 +260,8 @@
 				FA89960D249D02990055007D /* AdminListViewModel.swift */,
 				FA5A8209249BF13300D9C6E6 /* LoginViewModel.swift */,
 				FA5A820F249BF86200D9C6E6 /* SignUpViewModel.swift */,
+				FA89961A249D36100055007D /* UserDetailsViewModel.swift */,
+				FA899622249D42F80055007D /* UserDetailsPersonalViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -255,6 +273,8 @@
 				FA5A820B249BF16F00D9C6E6 /* LoginViewController.swift */,
 				FA5A820D249BF84800D9C6E6 /* SignUpViewController.swift */,
 				FA89960B249D027B0055007D /* AdminListViewController.swift */,
+				FA899618249D35FB0055007D /* UserDetailsViewController.swift */,
+				FA899620249D42B40055007D /* UserDetailsPersonalViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -281,6 +301,7 @@
 				FA5A8205249BEE9700D9C6E6 /* Extention.swift */,
 				FA47C292249CACD7000A18B5 /* ImagePickerManger.swift */,
 				FA47C298249CBA1D000A18B5 /* String.swift */,
+				FA89961E249D3FFE0055007D /* MobileUserDefault.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -555,10 +576,14 @@
 				FA5A81BC249BD66900D9C6E6 /* ViewController.swift in Sources */,
 				FA5A81EE249BD8A300D9C6E6 /* BaseViewModel.swift in Sources */,
 				FA5A8200249BE0A600D9C6E6 /* BaseViewController.swift in Sources */,
+				FA899625249D43540055007D /* UserDetailsPersonalCoordinator.swift in Sources */,
 				FA5A81F0249BD9C100D9C6E6 /* Coordinatable.swift in Sources */,
 				FA89960E249D02990055007D /* AdminListViewModel.swift in Sources */,
+				FA899621249D42B40055007D /* UserDetailsPersonalViewController.swift in Sources */,
 				FA5A820A249BF13300D9C6E6 /* LoginViewModel.swift in Sources */,
+				FA89961F249D3FFE0055007D /* MobileUserDefault.swift in Sources */,
 				FA47C293249CACD7000A18B5 /* ImagePickerManger.swift in Sources */,
+				FA89961D249D36210055007D /* UserDetailsCoordinator.swift in Sources */,
 				FA5A8210249BF86200D9C6E6 /* SignUpViewModel.swift in Sources */,
 				FA5A81FC249BE03E00D9C6E6 /* SplashViewModel.swift in Sources */,
 				FA5A820E249BF84800D9C6E6 /* SignUpViewController.swift in Sources */,
@@ -570,14 +595,17 @@
 				FA5A81F2249BDA0700D9C6E6 /* InstantiatableViewControllerType.swift in Sources */,
 				FA5A8204249BEE0300D9C6E6 /* RealmService.swift in Sources */,
 				FA899610249D02AA0055007D /* AdminListCoordinator.swift in Sources */,
+				FA89961B249D36100055007D /* UserDetailsViewModel.swift in Sources */,
 				FA5A81FA249BE02300D9C6E6 /* SplashViewController.swift in Sources */,
 				FA5A820C249BF16F00D9C6E6 /* LoginViewController.swift in Sources */,
 				FA5A8212249BF87500D9C6E6 /* SignUpCoordinator.swift in Sources */,
 				FA899616249D13180055007D /* AdminListTableViewCell.swift in Sources */,
+				FA899623249D42F80055007D /* UserDetailsPersonalViewModel.swift in Sources */,
 				FA5A8208249BF12500D9C6E6 /* LoginCoordinator.swift in Sources */,
 				FA5A8202249BE45900D9C6E6 /* UserModel.swift in Sources */,
 				FA5A81FE249BE05000D9C6E6 /* SplashCoordinator.swift in Sources */,
 				FA89960C249D027B0055007D /* AdminListViewController.swift in Sources */,
+				FA899619249D35FB0055007D /* UserDetailsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

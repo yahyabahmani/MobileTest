@@ -21,8 +21,14 @@ class SplashViewModel: BaseViewModel {
         }
         
     }
+    func showAdminLogin() {
+        (self.coordinator as? SplashCoordinator)?.adminLogin()
+    }
+    func showuserLogin (_ user:UserModel) {
+        (self.coordinator as? SplashCoordinator)?.userLogin(user)
+    }
     func showLogin() {
-        (self.coordinator as? SplashCoordinator)?.showLogin()
+        (self.coordinator as? SplashCoordinator)?.showLoginPage()
         
     }
     

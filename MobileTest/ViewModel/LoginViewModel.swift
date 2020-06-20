@@ -12,7 +12,8 @@ class LoginViewModel:BaseViewModel {
         (self.coordinator as? LoginCoordinator)?.showSignUp()
         
     }
-    func loginAction () {
+    func loginAction (_ user:UserModel) {
+        (self.coordinator as? LoginCoordinator)?.userLogin(user)
         
     }
     func adminLogin() {

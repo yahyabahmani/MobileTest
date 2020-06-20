@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import RealmSwift
 class LoginViewController: BaseViewController {
     var viewModel :LoginViewModel?
     
@@ -19,6 +19,18 @@ class LoginViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+//        if userMobile.shared.userEmail.count != 0 {
+//            let email = userMobile.shared.userEmail
+//            let realm = RealmService.shared.getDataFromDB(type: UserModel())
+//            if let user = realm.filter("email == %@",email).first {
+//                self.showUser(user)
+//            }
+//            
+//
+//        }
+//        if userMobile.shared.isLoginAdmin == true {
+//            self.viewModel?.adminLogin()
+//        }
         // Do any additional setup after loading the view.
     }
     
@@ -27,9 +39,37 @@ class LoginViewController: BaseViewController {
         self.viewModel?.signUpAction()
      
      }
+    fileprivate func showUser(_ user:UserModel) {
+        userMobile.shared.userEmail = user.email
+        self.viewModel?.loginAction(user )
+    }
+    fileprivate func showPrimaryUser(_ user: Results<UserModel>) {
+        if let primaryUser = user.first {
+            self.showUser(primaryUser)
+        }
+    }
+    
     @IBAction func loginAction(_ sender: Any) {
+        guard let email = self.userNameTextFeild.text else {
+            Alerts.ShowAlert( message: StringHelper.EmailError, vc: self)
+            return
+        }
+        guard let password = self.passwordTextFeild.text else {
+                 Alerts.ShowAlert( message: StringHelper.passwordIsnotStrong, vc: self)
+                 return
+             }
         if userNameTextFeild.text == "admin" && passwordTextFeild.text == "admin" {
             self.viewModel?.adminLogin()
+        }else{
+        let realm = RealmService.shared.getDataFromDB(type: UserModel())
+             let user = realm.filter("email == %@ AND password == %@",email,password)
+            if  user.count == 0{
+                Alerts.ShowAlert( message: StringHelper.errorInLogin, vc: self)
+            }else{
+                showPrimaryUser(user)
+            }
+
+            
         }
     }
     

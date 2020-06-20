@@ -24,7 +24,14 @@ class SplashCoordinator:Coordinatable {
     func showList() {
         
     }
-    func showLogin() {
+    func showLoginPage() {
         LoginCoordinator.init().coordinate(to: appWindow)
     }
+    func adminLogin() {
+        AdminListCoordinator.init().coordinate(to: rootViewController)
+    }
+    func userLogin(_ user:UserModel) {
+        UserDetailsPersonalCoordinator.init(user).coordinate(to: rootViewController)
+    }
+    
 }

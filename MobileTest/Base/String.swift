@@ -14,6 +14,8 @@ struct StringHelper {
     static var passwordIsnotStrong = "Your Password isn't Strong.The password must be contain numerical and capital values"
     static var ErrorDB = "We have error in dataBase"
     static var sucess = "is successfully saved"
+    static var DeleteUser = "user Deleted"
+    static var errorInLogin = "check your email or password"
 
 
 

@@ -52,7 +52,8 @@ extension AdminListViewController:UITableViewDelegate,UITableViewDataSource {
         }
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        let user = self.userModel[indexPath.row]
+        self.viewModel?.showDetailslsUser(user)
     }
     
     

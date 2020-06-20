@@ -26,6 +26,7 @@ class UserModel:Object {
         self.fullName = fullName
         self.email = email
         self.image = image
+        self.password = password
         self.usreType = userType.rawValue
     }
     

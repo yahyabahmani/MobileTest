@@ -59,10 +59,7 @@ class SignUpViewController: UIViewController {
         }
         let image =  (self.imageButton.image(for: .normal)) ?? UIImage()
          let imageData = image.jpeg(.medium) ?? Data()
-           // print(imageData.count)
-        
-        
-       // let dataPNGImg = image.pngData() ?? Data()
+
 
 
         let userModel = UserModel(fullName, email, imageData, password: password, userType: .personal)

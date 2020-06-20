@@ -8,7 +8,7 @@
 
 import Foundation
 class AdminViewModel:BaseViewModel {
-func showImage() {
-    
-}
+    func showDetailslsUser(_ user:UserModel) {
+        (coordinator as? AdminListCoordinator)?.showDetails(user)
+    }
 }

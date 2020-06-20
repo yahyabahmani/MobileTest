@@ -25,4 +25,7 @@ class LoginCoordinator: Coordinatable {
     func adminLogin() {
         AdminListCoordinator.init().coordinate(to: rootViewController)
     }
+    func userLogin(_ user:UserModel) {
+        UserDetailsPersonalCoordinator.init(user).coordinate(to: rootViewController)
+    }
 }
