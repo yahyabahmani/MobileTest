@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 
 class BaseViewModel {
-    weak var delegate: BaseViewModelDelegate?
     var coordinator: Coordinatable?
     
     func showError(errorString: String?) {
@@ -18,21 +17,3 @@ class BaseViewModel {
     }
 }
 
-protocol BaseViewModelDelegate: class {
-    func showVC(_ viewController: UIViewController)
-    func presentVC(_ viewController: UIViewController)
-    func popVC(_ animated: Bool)
-}
-extension UIViewController: BaseViewModelDelegate {
-    func showVC(_ viewController: UIViewController) {
-        self.show(viewController, sender: nil)
-    }
-    
-    func presentVC(_ viewController: UIViewController) {
-        self.present(viewController, animated: true)
-    }
-    
-    func popVC(_ animated: Bool) {
-        self.navigationController?.popViewController(animated: animated)
-    }
-}

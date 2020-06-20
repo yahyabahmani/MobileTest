@@ -13,25 +13,30 @@ class UserDetailsPersonalViewController: UIViewController {
     var userModel:UserModel?
     
     @IBOutlet weak var imageButton: UIButton!
-    
-    @IBOutlet weak var emailTextFeild: UITextField!
+    @IBOutlet weak var emailLabel: UILabel!
+    @IBOutlet weak var passwordTextFeild: UITextField!
     @IBOutlet weak var fullNameTextFeild: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.emailTextFeild.text = userModel?.email
+        emailLabel.text = userModel?.email
+        self.imageButton.layer.cornerRadius = self.imageButton.frame.width / 2
+        self.imageButton.layer.masksToBounds = true
+        self.passwordTextFeild.text = userModel?.password
         self.fullNameTextFeild.text = userModel?.fullName
-
+        self.imageButton.setImage(UIImage(data: userModel?.image ?? Data()), for: .normal)
+        
     }
     
     @IBAction func updateButton(_ sender: Any) {
         guard let userModel = userModel else{return}
-        if fullNameTextFeild.text != userModel.fullName || emailTextFeild.text != emailTextFeild.text {
+        if fullNameTextFeild.text != userModel.fullName || passwordTextFeild.text != userModel.password {
             let image =  (self.imageButton.image(for: .normal)) ?? UIImage()
-              let imageData = image.jpeg(.medium) ?? Data()
-
-            RealmService.shared.update(userModel , with: ["fullName":fullNameTextFeild.text,"emailTextFeild":emailTextFeild.text,"image":imageData]) { (error) in
+            let imageData = image.jpeg(.medium) ?? Data()
+            
+            RealmService.shared.update(userModel , with: ["fullName":fullNameTextFeild.text,"password":passwordTextFeild.text,"image":imageData]) { (error) in
                 if error == nil {
-                Alerts.ShowAlert( message: StringHelper.sucess, vc: self)
+                    Alerts.ShowAlert( message: StringHelper.sucess, vc: self)
                 }
             }
         }
@@ -47,13 +52,25 @@ class UserDetailsPersonalViewController: UIViewController {
                 }
             }
         }
+        
+    }
     
+    @IBAction func logoutButton(_ sender: Any) {
+        self.logout()
     }
     func logout()  {
         userMobile.shared.userEmail = ""
         self.dismiss(animated: true, completion: nil)
     }
-
+    
+    @IBAction func selectImageButton(_ sender: Any) {
+        ImagePickerManager().pickImage(self) { (image) in
+            self.imageButton.setImage(image, for: .normal)
+        }
+    }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
 }
 extension UserDetailsPersonalViewController:InstantiatableViewControllerType{
     static var storyboardName: StoryBoardName {

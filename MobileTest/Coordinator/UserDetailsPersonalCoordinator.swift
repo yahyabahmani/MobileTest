@@ -18,6 +18,5 @@ class UserDetailsPersonalCoordinator: Coordinatable {
         vc.viewModel = viewModel
         vc.userModel = user
         viewModel.coordinator = self
-        viewModel.delegate = vc
     }
 }

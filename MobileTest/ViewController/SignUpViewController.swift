@@ -21,7 +21,8 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var passwordTextFeild: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        imageButton.layer.cornerRadius = imageButton.frame.width / 2
+        imageButton.layer.masksToBounds = true
         // Do any additional setup after loading the view.
     }
     
@@ -40,7 +41,7 @@ class SignUpViewController: UIViewController {
             return
         }
         email = self.emailsTextFeild.text ?? ""
-        guard email.count != 0 else{
+        guard email.count != 0  && email.isValidEmail() else{
             Alerts.ShowAlert(title: "", message: StringHelper.EmailError, vc: self)
             return
         }
@@ -58,23 +59,26 @@ class SignUpViewController: UIViewController {
             return
         }
         let image =  (self.imageButton.image(for: .normal)) ?? UIImage()
-         let imageData = image.jpeg(.medium) ?? Data()
-
-
-
+        let imageData = image.jpeg(.medium) ?? Data()
+        
+        
+        
         let userModel = UserModel(fullName, email, imageData, password: password, userType: .personal)
         RealmService.shared.create(userModel) { ( error) in
             if error != nil {
                 Alerts.ShowAlert( message: StringHelper.ErrorDB, vc: self)
-
+                
             }else{
                 Alerts.ShowAlert( message: StringHelper.sucess, vc: self) { (alert) in
                     self.dismiss(animated: true, completion: nil)
                 }
-
+                
             }
         }
         
+    }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
     }
 }
 extension SignUpViewController:InstantiatableViewControllerType{

@@ -18,7 +18,6 @@ class SplashCoordinator:Coordinatable {
         let viewModel = SplashViewModel()
         vc.viewModel = viewModel
         viewModel.coordinator = self
-        viewModel.delegate = vc
     }
         
     func showList() {

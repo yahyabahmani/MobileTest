@@ -18,6 +18,8 @@ class UserDetailsViewController: UIViewController {
     var userModel : UserModel?
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.userimageView.layer.cornerRadius = self.userimageView.frame.width / 2
+        self.userimageView.layer.masksToBounds = true
         self.fullNameTextFeild.text = userModel?.fullName
         self.emailTextFeild.text = userModel?.email
         self.userimageView.image =  UIImage(data: userModel?.image ?? Data())
@@ -26,17 +28,17 @@ class UserDetailsViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }
 extension UserDetailsViewController:InstantiatableViewControllerType{
     static var storyboardName: StoryBoardName {

@@ -18,7 +18,6 @@ class  AdminListCoordinator: Coordinatable {
         let viewModel = AdminViewModel()
         vc.viewModel = viewModel
         viewModel.coordinator = self
-        viewModel.delegate = vc
     }
     func showDetails(_ user:UserModel) {
         UserDetailsCoordinaor.init(user).coordinate(to: rootViewController)

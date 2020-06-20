@@ -17,7 +17,6 @@ class LoginCoordinator: Coordinatable {
         let viewModel = LoginViewModel()
         vc.viewModel = viewModel
         viewModel.coordinator = self
-        viewModel.delegate = vc
     }
     func showSignUp() {
         SignUpCoordinator.init().coordinate(to: rootViewController)

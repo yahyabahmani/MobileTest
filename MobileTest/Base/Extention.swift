@@ -36,7 +36,14 @@ extension String {
         let passwordTest = NSPredicate(format: "SELF MATCHES %@", "(?=.*[A-Z])(?=.*[0-9]).{3,}")
         return passwordTest.evaluate(with: self)
     }
-}
+
+        func isValidEmail() -> Bool {
+            // here, `try!` will always succeed because the pattern is valid
+            let regex = try! NSRegularExpression(pattern: "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$", options: .caseInsensitive)
+            return regex.firstMatch(in: self, options: [], range: NSRange(location: 0, length: count)) != nil
+        }
+    }
+
 extension UITableView {
     func registerCell(_ name : String) {
         self.register(UINib(nibName: name, bundle: nil), forCellReuseIdentifier: name)

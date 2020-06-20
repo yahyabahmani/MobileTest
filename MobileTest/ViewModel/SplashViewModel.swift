@@ -10,23 +10,28 @@ import Foundation
 class SplashViewModel: BaseViewModel {
     
     override init() {
-        super.init()
-        delayForSeconds(delay: 2) {
-            let realm = RealmService.shared.getDataFromDB(type: UserModel())
-            if realm.count == 0 {
-                self.showLogin()
-            }else{
-                
-            }
-        }
-        
+    super.init()
+    }
+    func showDirect() {
+        if userMobile.shared.userEmail.count != 0 {
+             self.showUserLogin()
+         }else if userMobile.shared.isLoginAdmin == true {
+             self.showAdminLogin()
+         }else{
+             self.showLogin()
+         }
     }
     func showAdminLogin() {
         (self.coordinator as? SplashCoordinator)?.adminLogin()
     }
-    func showuserLogin (_ user:UserModel) {
-        (self.coordinator as? SplashCoordinator)?.userLogin(user)
+    func showUserLogin () {
+        let email = userMobile.shared.userEmail
+        let realm = RealmService.shared.getDataFromDB(type: UserModel())
+        if let user = realm.filter("email == %@",email).first {
+            (self.coordinator as? SplashCoordinator)?.userLogin(user)
+        }
     }
+    
     func showLogin() {
         (self.coordinator as? SplashCoordinator)?.showLoginPage()
         

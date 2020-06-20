@@ -7,16 +7,31 @@
 //
 
 import Foundation
+protocol LoginViewModelDelegate:NSObjectProtocol {
+    func showAlert()
+}
 class LoginViewModel:BaseViewModel {
+    weak var delegate :LoginViewModelDelegate?
     func signUpAction() {
         (self.coordinator as? LoginCoordinator)?.showSignUp()
-        
     }
-    func loginAction (_ user:UserModel) {
-        (self.coordinator as? LoginCoordinator)?.userLogin(user)
+    
+    func loginAction (_ email:String,_ password:String) {
+        let realm = RealmService.shared.getDataFromDB(type: UserModel())
+        if let user = realm.filter("email == %@ AND password == %@",email,password).first {
+            userMobile.shared.userEmail = user.email
+            (self.coordinator as? LoginCoordinator)?.userLogin(user)
+            
+        }else{
+            self.delegate?.showAlert()
+            
+        }
+        
+        
         
     }
     func adminLogin() {
+        userMobile.shared.isLoginAdmin  = true
         (self.coordinator as? LoginCoordinator)?.adminLogin()
     }
 }

@@ -12,18 +12,32 @@ class AdminListViewController: BaseViewController {
     
     @IBOutlet weak var table: UITableView!
     
+    @IBOutlet weak var barButton: UIBarButtonItem!
     
     var viewModel : AdminViewModel?
     var userModel = [UserModel]()
     override func viewDidLoad() {
         super.viewDidLoad()
+        //create a new button
+        let button = UIButton(type: .custom)
+        let image =  UIImage(named:"door")?.withRenderingMode(.alwaysOriginal)
+        button.setImage(image, for: .normal)
+        button.addTarget(self, action: #selector(barAction), for: .touchUpInside)
+        button.frame = CGRect(x: 0, y: 0, width: 53, height: 51)
+        let barButton = UIBarButtonItem(customView: button)
+        self.navigationItem.rightBarButtonItem = barButton
+        
         self.userModel = Array(RealmService.shared.getDataFromDB(type: UserModel()))
         // Do any additional setup after loading the view.
         self.table.registerCell(AdminListTableViewCell.nibName)
     }
     
-
-
+    @objc func barAction() {
+        userMobile.shared.isLoginAdmin = false
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    
 }
 
 extension AdminListViewController:UITableViewDelegate,UITableViewDataSource {
@@ -45,9 +59,9 @@ extension AdminListViewController:UITableViewDelegate,UITableViewDataSource {
                     return
                 }
                 self.userModel = Array(RealmService.shared.getDataFromDB(type: UserModel()))
-                         DispatchQueue.main.async {
-                            self.table.reloadData()
-                        }
+                DispatchQueue.main.async {
+                    self.table.reloadData()
+                }
             }
         }
     }
