@@ -61,20 +61,8 @@ class SignUpViewController: UIViewController {
         let image =  (self.imageButton.image(for: .normal)) ?? UIImage()
         let imageData = image.jpeg(.medium) ?? Data()
         
-        
-        
         let userModel = UserModel(fullName, email, imageData, password: password, userType: .personal)
-        RealmService.shared.create(userModel) { ( error) in
-            if error != nil {
-                Alerts.ShowAlert( message: StringHelper.ErrorDB, vc: self)
-                
-            }else{
-                Alerts.ShowAlert( message: StringHelper.sucess, vc: self) { (alert) in
-                    self.dismiss(animated: true, completion: nil)
-                }
-                
-            }
-        }
+        self.viewModel?.createUser(userModel)
         
     }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

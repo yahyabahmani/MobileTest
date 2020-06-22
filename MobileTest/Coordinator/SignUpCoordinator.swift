@@ -17,6 +17,7 @@ class SignUpCoordinator: Coordinatable {
         let viewModel = SignUpViewModel()
         vc.viewModel = viewModel
         viewModel.coordinator = self
+        viewModel.delegateViewModel = vc
     }
     
     

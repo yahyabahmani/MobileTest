@@ -16,6 +16,7 @@ struct StringHelper {
     static var sucess = "is successfully saved"
     static var DeleteUser = "user Deleted"
     static var errorInLogin = "please check your email or password"
+    static var errorUniqeEmail = "This email use before"
 
 
 
